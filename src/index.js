@@ -8,7 +8,8 @@ app.set('port', process.env.PORT || 3000);
 
 // Middlewares
 app.use(morgan('dev')); // Server requests in console
-app.use(express.static('public'));
+//app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: false })); // Gets data from HTML Forms
 app.use(express.json()); // Parses incoming req. to JSON 
 

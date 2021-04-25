@@ -1,13 +1,37 @@
 extends layout
-
 block layout-content
-  div.View
-    h1.Banner WHATABYTE
-    div.Message
-      div.Title
-        h3 Making the Best
-        h1 Food For Devs
-      span.Details Access the WHATABYTE Team Portal
-    div.NavButtons
-      a(href="/user")
-          div.NavButton Just dive in!
+
+  br
+  section
+    header.container
+      h1.text-center Calculator API REST 
+      br
+      input#operationField.form-control(
+        type='text'
+        name='operationField' 
+        placeholder='Type your expression here'
+        )
+      br
+      br
+      button#equalsBtn.form-control.btn.btn-primary = 
+      br
+      hr.container.mt-4
+
+  section.container
+    .row
+      br
+      .col
+        h2 Your operation request is: 
+        textarea#search-request.form-control(type='text' disabled='true')
+
+  hr.container.mt-4.mb-4
+
+  section.container
+    h2 Then your result response is: 
+    textarea#search-request-value.form-control(type='text' disabled='true')
+
+  section.container
+    hr.container
+    br
+    #render-container.container
+      h2 Result = 
