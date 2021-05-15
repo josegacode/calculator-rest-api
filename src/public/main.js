@@ -17,54 +17,9 @@ const makeRequest = async (url, data) => {
 }
 
 const getOperationExpression = () => {
+  let postData = [];
   const rawExpression = document.getElementById('operationField').value;
-  
-  const rawValues = rawExpression.split(' ').slice(0);
-  const postData = {
-    rawExpression: rawExpression,
-    operations: []
-  }
-
-  // SYNTAX VALIDATION for expressions with spaces 
-  // Clean the request
-  // Separates each value when the browser found blank space
-  // put it in a comma instead, then makes a new
-  // array taking the argument from 0 index to the
-  // end of it
-
-  // Left to right ...
-  // Extract operations with ()
-  let operation = [];
-  rawValues.forEach((element, index) => {
-    if(element.includes(`(`)) {
-      //console.log(`[${index}]${element}`);
-
-      // Gets the first operand ingoring '('
-      operation[0] = element.charAt(1); 
-    } else if(element.includes(`)`)) {
-      //console.log(`[${index}]${element}`);
-
-      // Type of operation
-      operation[1] = rawValues[index-1]; 
-
-      // Gets the second operand ingoring '('
-      operation[2] = element.charAt(0); 
-    } else {
-      // just put it in
-    }
-
-    // One operation was formatted
-    if(operation.length == 3) {
-      postData.operations.push(operation);
-      operation = [];
-    }
-  })
-
-  // Then extras expression of *, /
-  // Finally extract expression like +, -
-  
-
-  //console.log(`Values collected ${JSON.stringify(postData)}`);
+  postData.push(rawExpression);
 
   let url = `http://localhost:3000/api/v1/operation`;
 
