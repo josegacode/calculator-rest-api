@@ -2,27 +2,31 @@ extends layout
 block layout-content
 
   br
-  section
-    header.container
-      h1.text-center Calculator API REST 
-      br
-      input#operationField.form-control(
-        type='text'
-        name='operationField' 
-        placeholder='Type your expression here'
-        )
-      br
-      br
-      button#equalsBtn.form-control.btn.btn-primary = 
-      br
-      hr.container.mt-4
+  section.container
+    header
+      h1.text-center.mb-4 Calculator API REST 
+      .container.row
+        br
+        input#operationField.form-control.col(
+          type='text'
+          name='operationField' 
+          placeholder='Type your expression here'
+          )
+
+        #resultField.col.h2 = 
+
+    br
+    br
+    button#equalsBtn.form-control.btn.btn-primary = 
+    br
+    hr.container.mt-4
 
   section.container
     .row
       br
       .col
         h2 Your operation request is: 
-        textarea#search-request.form-control(type='text' disabled='true')
+        textarea#operationRequest.form-control(type='text' disabled='true')
 
   hr.container.mt-4.mb-4
 
@@ -30,8 +34,3 @@ block layout-content
     h2 Then your result response is: 
     textarea#operationResponse.form-control(type='text' disabled='true')
 
-  section.container
-    hr.container
-    br
-    #renderContainer.container
-      h2#resultField Result = 
